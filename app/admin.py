@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BookAuthor, Book
+from .models import BookAuthor, Book,FavoriteBook
 from import_export.admin import ImportExportActionModelAdmin
 
 
@@ -19,3 +19,4 @@ class BookAdmin(ImportExportActionModelAdmin):
 class BookAuthorAdmin(ImportExportActionModelAdmin):
     inlines = [BookInline]
 
+admin.site.register(FavoriteBook)
