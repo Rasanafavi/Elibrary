@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,6 @@ SECRET_KEY = "django-insecure-2j^q(5c785cw4$e72zwcl@nz&%n^b5#!(ar0ea5+pxkgd3^rjn
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-
 
 # Application definition
 INSTALLED_APPS = [
@@ -151,3 +151,17 @@ STATIC_ROOT = BASE_DIR/'assets'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+#ridux
+
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+SEND_ACTIVATION_EMAIL = False
+REGISTRATION_EMAIL_SUBJECT_PREFIX = ''
+
+REGISTRATION_OPEN = True
+LOGIN_URL = '/app/accounts/login/'
+LOGOUT_URL = '/app/accounts/logout/'
+LOGIN_REDIRECT_URL = '/'
+
