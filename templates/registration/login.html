@@ -12,12 +12,12 @@
 </form>
 
 <p>{% trans "Forgot your password?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>.</p>
-<p>{% trans "Not a member?" %} <a href="{% url 'app:purple' %}">{% trans "Register" %}</a>.</p>
+<p>{% trans "Not a member?" %} <a href="{% url 'registration_register' %} ">{% trans "Register" %}</a>.</p>
 {% endblock %}
 
 
 {% comment %}
-**registration/login.html**
+*registration/login.html*
 
 It's your responsibility to provide the login form in a template called
 registration/login.html by default. This template gets passed four

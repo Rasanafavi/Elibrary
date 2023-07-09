@@ -8,6 +8,7 @@ class BookInline(admin.TabularInline):
     extra = 0
     fields = ("title","slug", "year", "price", "is_special", "is_trending")
 
+
 @admin.register(Book)
 class BookAdmin(ImportExportActionModelAdmin):
     list_display = ("title", "year", "author", "price", "is_special", "is_trending")
@@ -15,8 +16,12 @@ class BookAdmin(ImportExportActionModelAdmin):
     search_fields = ("title", "author__name", "year", "description", "author__bio")
     prepopulated_fields = {"slug": ("title",)}
 
+
 @admin.register(BookAuthor)
 class BookAuthorAdmin(ImportExportActionModelAdmin):
     inlines = [BookInline]
 
-admin.site.register(FavoriteBook)
+
+@admin.register(FavoriteBook)
+class FavoriteBookAdmin(ImportExportActionModelAdmin):
+    autocomplete_fields = ("books",)

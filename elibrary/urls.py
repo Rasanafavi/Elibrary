@@ -7,11 +7,6 @@ urlpatterns = [
     path ('admin/', admin.site.urls),
     path ('',include('app.urls',namespace="app")),
     path('accounts/', include('registration.backends.default.urls')),
-    # path('accounts/', include('registration.backends.simple.urls')),
-
-
-    
-    # path('tinymce/', include('tinymce.urls')),
 
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

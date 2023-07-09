@@ -1,5 +1,4 @@
 {% load static %}
-<div class="container-fluid page-body-wrapper">
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
     <li class="nav-item nav-profile">
@@ -17,7 +16,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="{% url 'app:purple' %}">
         <span class="menu-title">Dashboard</span>
         <i class="mdi mdi-home menu-icon"></i>
       </a>
@@ -30,8 +29,8 @@
       </a>
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Buttons</a></li>
-          <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'app:buttons' %}">Buttons</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{% url 'app:typography' %}">Typography</a></li>
         </ul>
       </div>
     </li>
@@ -68,8 +67,8 @@
       <div class="collapse" id="general-pages">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
-          <li class="nav-item"> <a class="nav-link" href="{% url 'app:login' %}"> Login </a></li>
-          <li class="nav-item"> <a class="nav-link" href="{% url 'app:register' %}"> Register </a></li>
+          <li class="nav-item"> <a class="nav-link" href=""> Login </a></li>
+          <li class="nav-item"> <a class="nav-link" href=""> Register </a></li>
           <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
           <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
         </ul>
