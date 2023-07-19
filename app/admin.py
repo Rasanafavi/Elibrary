@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BookAuthor, Book,FavoriteBook
+from .models import BookAuthor, Book ,FavoriteBook
 from import_export.admin import ImportExportActionModelAdmin
 
 
@@ -24,4 +24,5 @@ class BookAuthorAdmin(ImportExportActionModelAdmin):
 
 @admin.register(FavoriteBook)
 class FavoriteBookAdmin(ImportExportActionModelAdmin):
-    autocomplete_fields = ("books",)
+    autocomplete_fields = ("books" ,)
+# admin.site.register(FavoriteBook)

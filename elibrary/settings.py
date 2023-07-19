@@ -20,19 +20,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-2j^q(5c785cw4$e72zwcl@nz&%n^b5#!(ar0ea5+pxkgd3^rjn"
+SECRET_KEY = 'django-insecure-pw5b%dwh&3hmcvx^#-3tmgw!^p0l)0e(ee35-k%d2ldh5g*^+1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
+
 INSTALLED_APPS = [
     "admin_interface",
     "colorfield",
-    'registration',
     'app',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,63 +40,53 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tinymce',
+    'versatileimagefield',
+    'import_export',
+    'registration',
     'crispy_forms',
     "crispy_bootstrap5",
-    'import_export',
-    'versatileimagefield',
 
 ]
+
+
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-VERSATILEIMAGEFIELD_SETTINGS = {
-	'cache_length': 2592000,
-	'cache_name': 'versatileimagefield_cache',
-	'jpeg_resize_quality': 70,
-	'sized_directory_name': '__sized__',
-	'filtered_directory_name': '__filtered__',
-	'placeholder_directory_name': '__placeholder__',
-	'create_images_on_demand': True,
-	'image_key_post_processor': None,
-	'progressive_jpeg': False
-}
-
-ROOT_URLCONF = "elibrary.urls"
+ROOT_URLCONF = 'elibrary.urls'
 
 TEMPLATES = [
     {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / 'templates'],
-        "APP_DIRS": True,
-        "OPTIONS": {
-            "context_processors": [
-                "django.template.context_processors.debug",
-                "django.template.context_processors.request",
-                "django.contrib.auth.context_processors.auth",
-                "django.contrib.messages.context_processors.messages",
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = "elibrary.wsgi.application"
+WSGI_APPLICATION = 'elibrary.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -106,29 +96,28 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = "UTC"
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -145,33 +134,69 @@ STATIC_FILE_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = ((BASE_DIR / 'static'),)
 STATIC_ROOT = BASE_DIR/'assets'
 
+VERSATILEIMAGEFIELD_SETTINGS = {
+	'cache_length': 2592000,
+	'cache_name': 'versatileimagefield_cache',
+	'jpeg_resize_quality': 70,
+	'sized_directory_name': '__sized__',
+	'filtered_directory_name': '__filtered__',
+	'placeholder_directory_name': '__placeholder__',
+	'create_images_on_demand': True,
+	'image_key_post_processor': None,
+	'progressive_jpeg': False
+}
+
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
-# SEND_ACTIVATION_EMAIL = False
+SEND_ACTIVATION_EMAIL = True
 REGISTRATION_EMAIL_SUBJECT_PREFIX = ''
 
 REGISTRATION_OPEN = True
 LOGIN_URL = '/accounts/login/'
 LOGOUT_URL = '/accounts/logout/'
 LOGIN_REDIRECT_URL = '/'
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
 EMAIL_USE_TLS = True
-
 EMAIL_HOST = 'smtp-relay.brevo.com'
-
 EMAIL_HOST_USER = 'rasanafavi@gmail.com'
-
-#Must generate specific password for your app in [gmail settings][1]
-EMAIL_HOST_PASSWORD = 'Hqz695J1LVgC4PRj'
-
+EMAIL_HOST_PASSWORD = 'xsmtpsib-5de151e429e37c2c6402c5791fc19b9686a656321d7e8b1d9a34c7458596d26b-H6FJMfSnkAsm5CgN'
 EMAIL_PORT = 587
 
 #This did the trick
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = 'mail@gmail.com'
+DEFAULT_BCC_EMAIL= 'rasanafavi@gmail.com'
+DEFAULT_REPLY_TO_EMAIL = 'rasanafavi@gmail.com'
+SERVER_EMAIL = 'rasanafavi@gmail.com'
+ADMIN_EMAIL = 'rasanafavi@gmail.com'
+
+
+# ACCOUNT_ACTIVATION_DAYS = 7
+# REGISTRATION_AUTO_LOGIN = True
+# SEND_ACTIVATION_EMAIL = False
+# REGISTRATION_EMAIL_SUBJECT_PREFIX = ''
+
+# REGISTRATION_OPEN = True
+# LOGIN_URL = '/app/accounts/login/'
+# LOGOUT_URL = '/app/accounts/logout/'
+# LOGIN_REDIRECT_URL = '/admin/'
+
+# EMAIL_BACKEND = config('EMAIL_BACKEND')
+# EMAIL_HOST = config('EMAIL_HOST')
+# EMAIL_PORT = config('EMAIL_PORT')
+# EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+# EMAIL_USE_TLS = True
+
+# DEFAULT_FROM_EMAIL= config('DEFAULT_FROM_EMAIL')
+# DEFAULT_BCC_EMAIL= config('DEFAULT_BCC_EMAIL')
+# DEFAULT_REPLY_TO_EMAIL = config('DEFAULT_REPLY_TO_EMAIL')
+# SERVER_EMAIL = config('SERVER_EMAIL')
+# ADMIN_EMAIL = config('ADMIN_EMAIL')
