@@ -28,24 +28,12 @@ urlpatterns = [
     path("author-update/<str:pk>/", views.authorUpdate.as_view(), name="authorupdate"),
     path("author-delete/<str:pk>/", views.authorDelete.as_view(), name="authordelete"),
 
+    path("user_create/", views.userCreate.as_view(), name="usercreate"),
+    path("user_list/", views.userList.as_view(), name="userlist"),
+    path("user_update/<str:pk>/", views.userUpdate.as_view(), name="userupdate"),
+    path("user_delete/<str:pk>/", views.userDelete.as_view(), name="userdelete"),
+    
 
 
 ]
 
-# from . import views
-# from django.urls import path
-
-# app_name='app'
-
-# urlpatterns=[
-#     path("",views.purple,name="purple"),
-#     path("charts/",views.charts,name="charts"),
-#     path("forms/",views.forms,name="forms"),
-#     path("mdi/",views.icons,name="icons"),
-#     path("login/",views.login,name="login"),
-#     path("register/",views.register,name="register"),
-#     path("tables/",views.tables,name="tables"),
-#     path("buttons/",views.buttons,name="buttons"),
-#     path("typography/",views.typography,name="typography"),
-
-# ]

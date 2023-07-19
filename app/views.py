@@ -10,6 +10,7 @@ from django.views.generic import ListView, DetailView, TemplateView
 from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
+from django.contrib.auth.models import User
 
 
 class Purple(LoginRequiredMixin, TemplateView):
@@ -62,7 +63,7 @@ class BookList(LoginRequiredMixin, ListView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = ''
+        context["title"] = 'book'
         return context
 
 
@@ -110,7 +111,7 @@ class authorList(LoginRequiredMixin, ListView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["title"] = ''
+        context["title"] = 'author'
         return context
 
 
@@ -131,8 +132,50 @@ class authorUpdate(LoginRequiredMixin, UpdateView):
 
 class authorDelete(LoginRequiredMixin, DeleteView):
     model =  BookAuthor
-    template_name = "web/author_delete.html"
+    template_name = "web/user_delete.html"
     fields = '__all__'
 
     def get_success_url(self):
         return reverse_lazy('app:authorlist')
+
+
+class userCreate(LoginRequiredMixin, CreateView):
+    model=User
+    fields = ("username","email",)
+    template_name = "web/user_form.html"
+    success_url = reverse_lazy('app:userlist')
+    
+
+class userList(LoginRequiredMixin, ListView):
+    model=User
+    template_name = "web/user_list.html"
+    success_url = reverse_lazy('app:userlist')
+
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["title"] = 'user'
+        return context
+
+
+class userUpdate(LoginRequiredMixin, UpdateView):
+    model =  User
+    template_name = "web/user_update.html"
+    fields = ("username","email",)
+    success_url = reverse_lazy('app:userlist')
+
+
+    def get_success_url(self):
+        return reverse_lazy('app:userlist')
+
+
+class userDelete(LoginRequiredMixin, DeleteView):
+    model =  User
+    template_name = "web/user_delete.html"
+    success_url = reverse_lazy('app:userlist')
+
+
+    def get_success_url(self):
+        return reverse_lazy('app:userlist')
+
+

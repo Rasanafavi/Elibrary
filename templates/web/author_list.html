@@ -6,9 +6,10 @@
 
 <div class="page-header">
     <h3 class="page-title">
+        
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
            <a href="{% url 'web:purple' %}"><i class="mdi mdi-home"></i></a>
-        </span> 
+        </span> {{title}}
     </h3>
     {% if request.user.is_superuser %}
     <nav aria-label="breadcrumb">

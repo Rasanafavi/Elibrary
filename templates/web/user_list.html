@@ -1,20 +1,21 @@
 {% extends 'web/base.html' %}
 {% load static %}
-
-
 {% block content %}
+
+
 
 <div class="page-header">
     <h3 class="page-title">
+        
         <span class="page-title-icon bg-gradient-primary text-white mr-2">
-            <i class="mdi mdi-home"></i>
+           <a href="{% url 'web:purple' %}"><i class="mdi mdi-home"></i></a>
         </span> {{title}}
     </h3>
     {% if request.user.is_superuser %}
     <nav aria-label="breadcrumb">
         <ul class="breadcrumb">
             <li class="breadcrumb-item active" aria-current="page">
-                <a href="{{object_list.0.new_link}}" class="btn btn-lg btn-gradient-primary">New </a>
+                <a href="{% url 'web:usercreate' %}" class="btn btn-lg btn-gradient-primary">New </a>
             </li>
         </ul>
     </nav>
@@ -38,12 +39,15 @@
                             {% for object in object_list %}
                             <tr>
                                 <td>{{forloop.counter}}</td>
-                                <td> {{object.title}} </td>
+                                <td> {{object.username}} </td>
+                                <td> {{object.email}} </td>
+                                <td> {{object.date_joined}} </td>
+
+
                                 {% if request.user.is_superuser %}
                                 <td>
-                                  <a href="{{object.get_absolute_url}}" class="btn btn-sm btn-circle btn-primary"><i class="mdi mdi-eye"></i></a> 
-                                    <a href="{{object.get_update_url}}" class="btn btn-sm btn-circle btn-info"><i class="mdi mdi-pencil"></i></a>
-                                    <a href="{{object.get_delete_url}}" class="btn btn-sm btn-circle btn-danger"><i class="mdi mdi-delete"></i></a>
+                                    <a href="{% url 'web:userupdate' object.id %}" class="btn btn-sm btn-circle btn-info"><i class="mdi mdi-pencil"></i></a>
+                                    <a href="{% url 'web:userdelete' object.id %}" class="btn btn-sm btn-circle btn-danger"><i class="mdi mdi-delete"></i></a>
                                 </td>
                                 {% endif %}
                             </tr>

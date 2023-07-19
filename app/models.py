@@ -6,6 +6,7 @@ class BookAuthor(models.Model):
     name = models.CharField(max_length=100)
     bio = models.TextField()
 
+
     def __str__(self):
         return str(self.name)
 
@@ -17,6 +18,8 @@ class BookAuthor(models.Model):
     
     def get_delete_url(self):
         return reverse_lazy('app:authordelete', kwargs={'pk': self.pk})
+
+
 
 class Book(models.Model):
     title = models.CharField(max_length=100)
@@ -49,4 +52,4 @@ class FavoriteBook(models.Model):
     books = models.ManyToManyField("Book", verbose_name=(""))
 
     def __str__(self):
-        return f"{self.user} "    
+        return f"{self.user} "

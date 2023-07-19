@@ -5,7 +5,7 @@
 
 {% block content %}
 <p>{% trans "Please check your email, {{ request.session.registration_email }}, to complete the registration process." %}</p>
-<p>{% trans "Not a member?" %} <a href=" {% url 'registration_register' %} ">{% trans "Register" %}</a>.</p>
+{% comment %} <p>{% trans "Not a member?" %} <a href=" {% url 'registration_register' %} ">{% trans "Register" %}</a>.</p> {% endcomment %}
 
 {% endblock %}
 
